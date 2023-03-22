@@ -3,10 +3,11 @@ import './App.css';
 import Header from './components/Header';
 import Favorites from './Pages/Favorites';
 import Home from './Pages/Home';
-import Upcoming from './Pages/Upcoming'
-import NotFound from './Pages/NotFound'
-import { BrowserRouter as Router } from 'react-router-dom';
-import { Route, Routes } from 'react-router-dom';
+import Upcoming from './Pages/Upcoming';
+import NotFound from './Pages/NotFound';
+import ShowPage from './Pages/ShowPage';
+
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
           <Route path="/home" element={<Home />}/> 
           <Route path="/favorites" element={<Favorites />}/> 
           <Route path="/upcoming" element={<Upcoming />}/> 
+          <Route path="/show/:showID" element={<ShowPage />}/>
           <Route path="*" element={<NotFound/>}/> 
 
         </Routes>
