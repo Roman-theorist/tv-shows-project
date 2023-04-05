@@ -1,13 +1,22 @@
 import ShowList from '../components/ShowList';
-import showsData from  '../shows-data';
+import { getHomeShows } from '../helpers/showsHelper';
 
+const showsData = getHomeShows()
 
 function Home() {
     return (
-        <div className="HomePage">
-        <h1>The Best TV Shows App</h1>
-        <ShowList shows={showsData}/>
-        </div>
+        <>
+        {
+            !!showsData ?
+
+            <div className="HomePage">
+                <h1>The Best TV Shows App</h1>
+                <ShowList shows={showsData}/>
+            </div>
+            :
+            <h1>Couldn't load show</h1>
+        }
+        </>
     )
 }
 export default Home

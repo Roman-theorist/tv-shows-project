@@ -6,6 +6,7 @@ import Home from './Pages/Home';
 import Upcoming from './Pages/Upcoming';
 import NotFound from './Pages/NotFound';
 import ShowPage from './Pages/ShowPage';
+import Search from './Pages/Search';
 
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
@@ -21,6 +22,7 @@ function App() {
           <Route path="/favorites" element={<Favorites />}/> 
           <Route path="/upcoming" element={<Upcoming />}/> 
           <Route path="/show/:showID" element={<ShowPage />}/>
+          <Route path="/search" element={<Search/>}/>
           <Route path="*" element={<NotFound/>}/> 
 
         </Routes>
