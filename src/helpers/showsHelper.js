@@ -9,9 +9,12 @@ function transformShow(show) {
 }
 
 
-export function getShowByID (id) {
-    const show=showsData.find(show => show.id==id)
-    return show
+export async function getShowByID (id) {
+    const response = await fetch("https://api.tvmaze.com/shows/" + id)
+    const showData = await response.json()
+    return transformShow(showData)
+//    const show=showsData.find(show => show.id==id)
+//    return show
 }
 
 export function getHomeShows() {
@@ -19,7 +22,7 @@ export function getHomeShows() {
 }
 
 export async function searchForShow(text){
-    const response = await fetch("http://api.tvmaze.com/search/show?q=" + text)
+    const response = await fetch("http://api.tvmaze.com/search/shows?q=" + text)
     const jsonData = await response.json()
     const showResults = jsonData.map( element => transformShow(element.show))
     return showResults

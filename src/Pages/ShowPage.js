@@ -1,11 +1,21 @@
 import {useParams} from "react-router-dom"
 import {getShowByID} from "../helpers/showsHelper" 
 import NotFound from "./NotFound"
+import { useEffect, useState } from "react"
 
 function ShowPage () {
-    const params = useParams()
-    const show = getShowByID(params.showID)
+    const {showID} = useParams()
+    const [show, setShow] = useState(undefined)
     
+    useEffect( () => {
+        const fetchShow = async () => {
+            const showsData = await getShowByID(showID)
+            setShow(showsData)
+        }
+        fetchShow()
+    }, [showID])
+    
+
     if (!show) {
         return (<NotFound/>)
     }
