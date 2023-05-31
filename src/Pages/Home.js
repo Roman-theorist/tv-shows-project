@@ -1,20 +1,33 @@
 import ShowList from '../components/ShowList';
+import { useEffect, useState } from 'react';
 import { getHomeShows } from '../helpers/showsHelper';
 
-const showsData = getHomeShows()
+//const showsData = getHomeShows()
 
 function Home() {
+    const [shows, setShows]=useState(undefined)
+
+    useEffect(
+        () => {
+            const fetchShows = async () => {
+                const showsData = await getHomeShows()
+                setShows(showsData)
+            }
+            fetchShows()
+        }, []
+    )
+
     return (
         <>
         {
-            !!showsData ?
+            !!shows ?
 
             <div className="HomePage">
                 <h1>The Best TV Shows App</h1>
-                <ShowList shows={showsData}/>
+                <ShowList shows={shows}/>
             </div>
             :
-            <h1>Couldn't load show</h1>
+            <h1>Couldn't load shows</h1>
         }
         </>
     )

@@ -102,3 +102,9 @@
   display: grid;
   grid-template-columns: repeat(4,1fr);
 }
+
+.ShowPage{
+  displey: flex;
+  align-items: center;
+  flex-direction: column;
+}

@@ -6,13 +6,6 @@ function Header() {
     
     const navigate = useNavigate()
 
-    function handleSearch (event) {
-        if (!event.target.value.trim()){
-            navigate("/")
-        } else {
-        navigate ("/search/" + event.target.value.trim() )
-        }
-    }
 
     return (
         <div className="Header">
@@ -43,6 +36,14 @@ function Header() {
             
         </div>
     )
+
+    function handleSearch (event) {
+        if (!event.target.value.trim()=== ""){
+            navigate("/")
+        } else {
+        navigate ("/search/" + event.target.value.trim() )
+        }
+    }
 
 
 }
